@@ -40,6 +40,17 @@ defaults write com.apple.screencapture type -string "png"
 # disable autocorrect
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+## Language & Region
+
+# setup system lanuages (in order of preference)
+# defaults write NSGlobalDomain AppleLanguages -array "en-US" "ru"
+
+# show language menu in the top right corner of the boot screen
+# sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+# set time zome automatically using current location
+sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool true
+
 ## Security
 
 # disable the warning before emptying the Trash
