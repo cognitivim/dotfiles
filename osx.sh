@@ -27,6 +27,27 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
+## Menu bar
+
+# show percentage charged battery
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+# show volume
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
+
+# show bluetooth
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true
+defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+
+# set clock format:
+#   "h:mm" Default
+#   "HH"   Use a 24-hour clock
+#   "a"    Show AM/PM
+#   "ss"   Display the time with seconds
+
+# defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+
 ## Dock
 
 # automatically hide and show
