@@ -223,11 +223,15 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 
-killall Dock
-killall Finder
-killall SystemUIServer
+## Kill affected applications
+
+for app in "Dock" "Finder" "Safari" "SystemUIServer"; do
+  killall "${app}" &> /dev/null
+done
+
 
 # Install all available updates
 sudo softwareupdate -ia --verbose
+
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
