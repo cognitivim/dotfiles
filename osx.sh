@@ -31,14 +31,27 @@ sudo nvram SystemAudioVolume=" "
 # avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# save screenshots to the desktop
+# screencapture: save to the desktop
 defaults write com.apple.screencapture location -string "$HOME/Desktop"
 
-# save screenshots in PNG format
+# screencapture: save in PNG format
 defaults write com.apple.screencapture type -string "png"
+
+# Spotlight: exclude Downloads folder 
+sudo defaults write /.Spotlight-V100/VolumeConfiguration.plist Exclusions -array-add "$HOME/Downloads"
+touch ~/Downloads/.metadata_never_index
 
 # disable autocorrect
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# automatically quit printer app once the print jobs complete
+# defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# iTunes: stop responding to the keyboard media keys
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 ## Language & Region
 
@@ -122,8 +135,6 @@ FOLDER_HEAD="<dict><key>tile-data</key><dict><key>arrangement</key><integer>0</i
 FOLDER_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>3</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "$FOLDER_HEAD$HOME/Downloads$FOLDER_TAIL"
 
-killall Dock
-
 ## Dashboard
 
 # disable Dashboard
@@ -166,9 +177,8 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 # keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
+killall Dock
 killall Finder
-
-
 killall SystemUIServer
 
 # Install all available updates
