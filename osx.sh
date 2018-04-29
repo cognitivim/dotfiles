@@ -38,6 +38,14 @@ defaults write com.apple.dock persistent-others -array-add "$FOLDER_HEAD$HOME/Do
 
 killall Dock
 
+## Dashboard
+
+# disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+# don’t show Dashboard as a Space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
 ## Finder 
 
 # show hidden files by default
