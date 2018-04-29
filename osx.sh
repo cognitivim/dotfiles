@@ -40,6 +40,25 @@ defaults write com.apple.screencapture type -string "png"
 # disable autocorrect
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+## Security
+
+# disable the warning before emptying the Trash
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# allow applications downloaded from anywhere
+sudo spctl --master-disable
+
+# allow guests to login to this computer
+sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+
+# disable disk image verification
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
 ## Trackpad
 
 # disable natural scrolling
