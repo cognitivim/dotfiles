@@ -9,6 +9,18 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Setting up Mac OS X apps and preferences..."
 
+## Trackpad
+
+# disable natural scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# enable tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+# enable tap to click for the login screen
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 ## Dock
 
