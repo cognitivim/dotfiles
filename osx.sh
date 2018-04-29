@@ -10,6 +10,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Setting up Mac OS X apps and preferences..."
 
+
 ## General
 
 # set computer name
@@ -53,6 +54,7 @@ touch ~/Downloads/.metadata_never_index
 # iTunes: stop responding to the keyboard media keys
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
+
 ## Language & Region
 
 # setup system lanuages (in order of preference)
@@ -63,6 +65,7 @@ touch ~/Downloads/.metadata_never_index
 
 # set time zome automatically using current location
 sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool true
+
 
 ## Security
 
@@ -83,6 +86,7 @@ defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
+
 ## Trackpad
 
 # disable natural scrolling
@@ -99,6 +103,7 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # enable 3-finger drag
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
 
 ## Menu bar
 
@@ -121,6 +126,7 @@ defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/C
 
 # defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
 
+
 ## Dock
 
 # automatically hide and show
@@ -135,6 +141,7 @@ FOLDER_HEAD="<dict><key>tile-data</key><dict><key>arrangement</key><integer>0</i
 FOLDER_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>3</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "$FOLDER_HEAD$HOME/Downloads$FOLDER_TAIL"
 
+
 ## Dashboard
 
 # disable Dashboard
@@ -142,6 +149,7 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 
 # don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
+
 
 ## Finder 
 
@@ -176,6 +184,28 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+
+## Safari
+
+# don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# show the full URL in the address bar
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+# allow hitting the Backspace key to go to the previous page in history
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
+
+# enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+
+# add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
 
 killall Dock
 killall Finder
