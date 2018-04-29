@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # ask for the administrator password upfront
+# cache the root password
 sudo -v
 
 # keep-alive: update existing `sudo` time stamp until script has finished
@@ -21,6 +22,10 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 # enable tap to click for the login screen
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# enable 3-finger drag
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
 ## Dock
 
@@ -87,3 +92,5 @@ killall SystemUIServer
 
 # Install all available updates
 sudo softwareupdate -ia --verbose
+
+echo "Done. Note that some of these changes require a logout/restart to take effect."
