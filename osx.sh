@@ -9,6 +9,23 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Setting up Mac OS X apps and preferences..."
 
+
+## Dock
+
+# automatically hide and show
+defaults write com.apple.dock autohide -bool true
+
+# remove all default icons
+defaults delete com.apple.dock persistent-apps
+defaults delete com.apple.dock persistent-others
+
+# add Downloads folder
+FOLDER_HEAD="<dict><key>tile-data</key><dict><key>arrangement</key><integer>0</integer><key>displayas</key><integer>1</integer><key>file-data</key><dict><key>_CFURLString</key><string>"
+FOLDER_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>3</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
+defaults write com.apple.dock persistent-others -array-add "$FOLDER_HEAD$HOME/Downloads$FOLDER_TAIL"
+
+killall Dock
+
 ## Finder 
 
 # show hidden files by default
@@ -44,9 +61,9 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 killall Finder
-killall -HUP SystemUIServer
 
-##
+
+killall SystemUIServer
 
 # Install all available updates
 sudo softwareupdate -ia --verbose
