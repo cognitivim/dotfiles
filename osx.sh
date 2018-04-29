@@ -10,6 +10,36 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Setting up Mac OS X apps and preferences..."
 
+## General
+
+# set computer name
+HOSTNAME="marina-mac"
+sudo scutil --set ComputerName $HOSTNAME
+sudo scutil --set HostName $HOSTNAME
+sudo scutil --set LocalHostName $HOSTNAME
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $HOSTNAME
+
+# always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
+# show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
+
+# avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# save screenshots to the desktop
+defaults write com.apple.screencapture location -string "$HOME/Desktop"
+
+# save screenshots in PNG format
+defaults write com.apple.screencapture type -string "png"
+
+# disable autocorrect
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
 ## Trackpad
 
 # disable natural scrolling
