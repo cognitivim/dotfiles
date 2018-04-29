@@ -186,6 +186,16 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 
+## TextEdit
+
+# use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -int 0
+
+# open and save files as UTF-8
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+
 ## Safari
 
 # don’t send search queries to Apple
