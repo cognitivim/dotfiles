@@ -144,6 +144,11 @@ FOLDER_HEAD="<dict><key>tile-data</key><dict><key>arrangement</key><integer>0</i
 FOLDER_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>3</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "$FOLDER_HEAD$HOME/Downloads$FOLDER_TAIL"
 
+# add Launchpad
+APP_HEAD="<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>"
+APP_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+defaults write com.apple.dock persistent-apps -array-add "$APP_HEAD/Applications/Launchpad.app$APP_TAIL"
+
 
 ## Dashboard
 
