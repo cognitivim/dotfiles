@@ -24,7 +24,7 @@ if test ! $(which brew); then
   fi
 
   # allow installing non-standard versions of packages
-  # brew tap caskroom/versions
+  brew tap caskroom/versions
 else
   echo "Brew is already installed!"
 fi
