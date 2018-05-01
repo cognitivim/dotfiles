@@ -179,8 +179,11 @@ defaults write com.apple.finder ShowSidebar -bool true
 # use list view in all windows by default
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# set default location for new Finder windows
-defaults write com.apple.finder NewWindowTargetPath "file://$HOME"
+# set Desktop as default location for new Finder windows
+# for other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+
 
 # automatically open a new Finder window when a volume is mounted
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
