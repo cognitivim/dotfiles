@@ -18,7 +18,7 @@ cask "java"
 cask "sourcetree"
 cask "gitkraken"
 cask "jetbrains-toolbox"
-cask "sublime-text3"
+cask "sublime-text"
 cask "insomnia"
 cask "google-chrome-canary"
 
