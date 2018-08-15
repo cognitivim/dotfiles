@@ -32,4 +32,3 @@ cask "telegram"
 cask "the-unarchiver"
 
 cask "calibre"
-cask "bittorrent"
