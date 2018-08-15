@@ -29,6 +29,7 @@ cask "spotify"
 cask "pocket-casts"
 cask "slack"
 cask "telegram"
+cask "the-unarchiver"
 
 cask "calibre"
 cask "bittorrent"
