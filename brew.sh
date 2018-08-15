@@ -20,7 +20,11 @@ else
   echo "Brew is already installed!"
 fi
 
+brew tap homebrew/bundle
+
+
 echo "Updating Homebrew formulas ..."
+
 
 brew update &&
 # brew upgrade brew-cask &&
@@ -30,5 +34,13 @@ brew cleanup &&
 # check for issues. set permissions (prompting for sudo password) if necessary
 # brew cask doctor
 brew doctor
+
+
+echo "Installing all of the dependencies ..."
+
+
+# brew bundle -v --file=./Brewfile
+brew bundle
+
 
 echo "Done."
