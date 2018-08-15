@@ -22,6 +22,7 @@ cask "sublime-text"
 cask "insomnia"
 cask "google-chrome-canary"
 
+cask "alfred"
 cask "notion"
 cask "evernote"
 cask "tunnelbear"
