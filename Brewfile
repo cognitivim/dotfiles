@@ -19,6 +19,7 @@ cask "sourcetree"
 cask "gitkraken"
 cask "jetbrains-toolbox"
 cask "sublime-text"
+cask "postman"
 cask "insomnia"
 cask "google-chrome-canary"
 
@@ -31,5 +32,4 @@ cask "pocket-casts"
 cask "slack"
 cask "telegram"
 cask "the-unarchiver"
-
 cask "calibre"
