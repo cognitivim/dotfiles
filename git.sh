@@ -55,7 +55,7 @@ fi
 
 # github
 
-gpg --armor --export 8B74A99B65995CB9
+gpg --armor --export $GPG_KEYID
 # ...
 
 # To sign a tag, add -s to your git tag command.
