@@ -3,6 +3,7 @@ cask_args appdir: "/Applications"
 tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
+tap "homebrew/cask-drivers"
 
 brew "git"
 brew "git-flow"
