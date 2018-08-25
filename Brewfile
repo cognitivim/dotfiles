@@ -23,6 +23,7 @@ cask "postman"
 cask "insomnia"
 cask "google-chrome-canary"
 
+cask "logitech-options"
 cask "vlc"
 cask "alfred"
 cask "notion"
