@@ -23,6 +23,7 @@ cask "postman"
 cask "insomnia"
 cask "google-chrome-canary"
 
+cask "vlc"
 cask "alfred"
 cask "notion"
 cask "evernote"
