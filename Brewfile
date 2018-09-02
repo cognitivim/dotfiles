@@ -9,7 +9,6 @@ brew "git"
 brew "git-flow"
 brew "gpg"
 brew "gpg2"
-brew "gpg-agent"
 brew "pinentry-mac"
 
 brew "node"
