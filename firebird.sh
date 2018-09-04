@@ -10,7 +10,7 @@ firebirdBin='export PATH=$PATH:$FIREBIRD_HOME/bin'
 grep -q -F "$firebirdBin" ~/.bash_profile || echo "$firebirdBin" >> ~/.bash_profile
 
 # TODO wait finish install
-
+mkdir -p /usr/local/lib
 ln -s /Library/Frameworks/Firebird.framework/Versions/A/Firebird /usr/local/lib/libfbclient.dylib
 
 # troubleshooting: Can not access lock files directory /tmp/firebird/
