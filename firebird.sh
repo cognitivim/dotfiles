@@ -11,5 +11,7 @@ grep -q -F "$firebirdBin" ~/.bash_profile || echo "$firebirdBin" >> ~/.bash_prof
 
 # TODO wait finish install
 
+ln -s /Library/Frameworks/Firebird.framework/Versions/A/Firebird /usr/local/lib/libfbclient.dylib
+
 # troubleshooting: Can not access lock files directory /tmp/firebird/
 sudo dseditgroup -o edit -a $(whoami) -t user firebird
