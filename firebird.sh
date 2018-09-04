@@ -15,3 +15,7 @@ ln -s /Library/Frameworks/Firebird.framework/Versions/A/Firebird /usr/local/lib/
 
 # troubleshooting: Can not access lock files directory /tmp/firebird/
 sudo dseditgroup -o edit -a $(whoami) -t user firebird
+
+# troubleshooting: I/O error during "open O_CREAT" operation. Error while trying to create file. Permission denied
+chgrp -R firebird /Library/Frameworks/Firebird.framework
+sudo chmod -R g+rwx /Library/Frameworks/Firebird.framework
