@@ -8,3 +8,8 @@ grep -q -F "$firebirdHome" ~/.bash_profile || echo "$firebirdHome" >> ~/.bash_pr
 
 firebirdBin='export PATH=$PATH:$FIREBIRD_HOME/bin'
 grep -q -F "$firebirdBin" ~/.bash_profile || echo "$firebirdBin" >> ~/.bash_profile
+
+# TODO wait finish install
+
+# troubleshooting: Can not access lock files directory /tmp/firebird/
+sudo dseditgroup -o edit -a $(whoami) -t user firebird
