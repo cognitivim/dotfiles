@@ -1,12 +1,10 @@
 #!/bin/bash
 
-echo "Java installation..." 
+# echo "Java installation..." 
+# VERSION=${1}
+# brew cask install java${1}
 
-
-VERSION=${1}
-
-brew cask install java${1}
-# check
 java -version
+echo 'export JAVA_HOME=$(/usr/libexec/java_home)' >> ~/.bash_profile
 
-echo "Done."
+# echo "Done."
