@@ -21,6 +21,7 @@ cask "jetbrains-toolbox"
 cask "sublime-text"
 cask "postman"
 cask "insomnia"
+cask "cheatsheet"
 cask "google-chrome-canary"
 cask "firefox-developer-edition"
 
