@@ -20,6 +20,9 @@ sudo scutil --set HostName $HOSTNAME
 sudo scutil --set LocalHostName $HOSTNAME
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $HOSTNAME
 
+# auto login
+sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser $(whoami)
+
 # always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
@@ -45,14 +48,44 @@ touch ~/Downloads/.metadata_never_index
 # disable autocorrect
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+# disable automatic capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
-# automatically quit printer app once the print jobs complete
-# defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+# disable smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # iTunes: stop responding to the keyboard media keys
 # launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+# show fast user switching menu as: Account Name
+# defaults write -g userMenuExtraStyle -int 1
+
+# allow text selection in Quick Look
+# defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# disabling automatic termination of inactive apps
+# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# automatically illuminate built-in MacBook keyboard in low light
+# defaults write com.apple.BezelServices kDim -bool true
+
+# turn off keyboard illumination when computer is not used for 5 minutes
+# defaults write com.apple.BezelServices kDimTime -int 300
+
+# set keyboard repeat rate to "damn fast".
+# defaults write NSGlobalDomain KeyRepeat -int 2
+
+# enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+# enable HiDPI display modes (requires restart)
+# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 
 ## Language & Region
@@ -60,11 +93,21 @@ touch ~/Downloads/.metadata_never_index
 # setup system lanuages (in order of preference)
 # defaults write NSGlobalDomain AppleLanguages -array "en-US" "ru"
 
+# add english & russian keyboard layout
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>0</integer><key>KeyboardLayout Name</key><string>U.S.</string></dict>'
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>1</integer><key>KeyboardLayout Name</key><string>Russian</string></dict>'
+
 # show language menu in the top right corner of the boot screen
 # sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 # set time zome automatically using current location
 sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool true
+
+# set language and text formats
+# defaults write NSGlobalDomain AppleLanguages -array "en"
+# defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+# defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+# defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 
 ## Security
@@ -86,8 +129,12 @@ defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# require administrator authorisation to change network
+# require administrator auth to change network
 /usr/libexec/airportd prefs RequireAdminNetworkChange=YES RequireAdminIBSS=YES
+
+# require password immediately after sleep or screen saver begins
+# defaults write com.apple.screensaver askForPassword -int 1
+# defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 
 ## Trackpad
@@ -99,8 +146,10 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
-# enable tap to click for the login screen
+# enable tap to click for the active user
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# enable tap to click for the login screen
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # enable 3-finger drag
@@ -126,8 +175,11 @@ defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/C
 #   "HH"   Use a 24-hour clock
 #   "a"    Show AM/PM
 #   "ss"   Display the time with seconds
+# Reference http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns
 
 # defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+# EEE d MMM  HH:mm = Sun 20 Jul  13:15
+# defaults write com.apple.menuextra.clock DateFormat "EEE d MMM  HH:mm"
 
 
 ## Dock
@@ -149,6 +201,9 @@ APP_HEAD="<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLS
 APP_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
 defaults write com.apple.dock persistent-apps -array-add "$APP_HEAD/Applications/Launchpad.app$APP_TAIL"
 
+# don’t automatically rearrange Spaces based on most recent use
+# defaults write com.apple.dock mru-spaces -bool false
+
 
 ## Dashboard
 
@@ -159,10 +214,20 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 defaults write com.apple.dock dashboard-in-overlay -bool true
 
 
+## Desktop
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Mojave Night.jpg"'
+# screensaver kill
+# defaults write com.apple.screensaver idleTime -int 0
+# defaults -currentHost write com.apple.screensaver idleTime -int 0
+
+
 ## Finder 
 
 # show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# show library
+# chflags nohidden ~/Library
 
 # show tab bar
 defaults write com.apple.finder ShowTabView -bool true
@@ -178,12 +243,12 @@ defaults write com.apple.finder ShowSidebar -bool true
 
 # use list view in all windows by default
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+# defaults write com.apple.finder FXPreferredViewStyle Nlsv
 
 # set Desktop as default location for new Finder windows
 # for other paths, use `PfLo` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
-
 
 # automatically open a new Finder window when a volume is mounted
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
@@ -195,6 +260,18 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# use current directory as default search scope
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# show external drive icons
+# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+
+# show mounted server icons
+# defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+
+# show removable media icons
+# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 
 ## TextEdit
@@ -232,6 +309,16 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # prevent opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+
+## Printer
+
+# automatically quit printer app once the print jobs complete
+# defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 
 ## Kill affected applications
