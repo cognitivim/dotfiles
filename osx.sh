@@ -379,6 +379,12 @@ defaults write com.apple.iCal "n days of week" 7
 defaults write com.apple.iCal "number of hours displayed" 18
 
 
+## Chrome
+
+# make Google Chrome the default browser
+defaults write com.google.Chrome DefaultBrowserSettingEnabled -bool YES
+
+
 ## Kill affected applications
 
 for app in "Dock" "Finder" "Safari" "SystemUIServer"; do
