@@ -14,6 +14,14 @@ brew "git"
 brew "node"
 brew "yarn", args: ['without-node']
 
+# cask "gpg-suite"
+# cask "appcleaner"
+# cask "cyberduck"
+# cask "iina"
+# cask "prefs-editor"
+# cask "sketch"
+# cask "webtorrent"
+
 cask "java"
 cask "sourcetree"
 cask "gitkraken"
