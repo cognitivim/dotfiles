@@ -381,8 +381,8 @@ defaults write com.apple.iCal "number of hours displayed" 18
 
 ## Chrome
 
-# make Google Chrome the default browser
-defaults write com.google.Chrome DefaultBrowserSettingEnabled -bool YES
+# make Google Chrome Canary the default browser
+defaults write com.google.Chrome.canary DefaultBrowserSettingEnabled -bool true
 
 
 ## Kill affected applications
