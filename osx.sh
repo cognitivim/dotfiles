@@ -32,6 +32,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# play sound feedback when adjusting volume
+defaults write -g com.apple.sound.beep.feedback -int 1
+
 # avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -87,6 +90,14 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # enable HiDPI display modes (requires restart)
 # sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
+# zoom: Options… > Use scroll wheel with modifier keys to zoom: ^ [control]
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask 262144
+
+# zoom: Options… > Disable zoom with cmd+scroll
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool false
+
+# theme mode
+# defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
 ## Language & Region
 
@@ -319,6 +330,46 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+
+## Time Machine
+
+# prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+
+## Mail
+
+# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
+
+# Display emails in threaded mode, sorted by date (oldest at the top)
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+
+# "TB Item Identifiers" is the interesting item column
+defaults write com.apple.mail "NSToolbar Configuration MainWindow" -dict \
+  "TB Default Item Identifiers" '("checkNewMail:","showComposeWindow:",NSToolbarSpaceItem,NSToolbarFlexibleSpaceItem,"delete_junk","reply_replyAll_forward",FlaggedStatus,NSToolbarFlexibleSpaceItem,Search)' \
+  "TB Display Mode" 2 \
+  "TB Icon Size Mode" 1 \
+  "TB Is Shown" 1 \
+  "TB Item Identifiers" '("checkNewMail:",NSToolbarFlexibleSpaceItem,Search)' \
+  "TB Size Mode" 1
+
+
+## iCal
+
+# day start 9:00, end at 18:00
+defaults write com.apple.iCal "first minute of work hours" $((9 * 60))
+defaults write com.apple.iCal "last minute of work hours" $((18 * 60))
+
+defaults write com.apple.iCal "first minute of day time range" 0
+defaults write com.apple.iCal "last minute of day time range" $((24 * 60))
+
+defaults write com.apple.iCal "n days of week" 7
+
+defaults write com.apple.iCal "number of hours displayed" 18
 
 
 ## Kill affected applications
