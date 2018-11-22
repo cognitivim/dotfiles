@@ -99,6 +99,13 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # theme mode
 # defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
+# hide macOS unused folders
+chflags -h hidden $HOME/Documents
+chflags -h hidden $HOME/Movies
+chflags -h hidden $HOME/Music
+chflags -h hidden $HOME/Pictures
+
+
 ## Language & Region
 
 # setup system lanuages (in order of preference)
