@@ -5,12 +5,12 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/cask-drivers"
 
+brew "mas"
 brew "git"
-brew "git-flow"
-brew "gpg"
-brew "gpg2"
-brew "pinentry-mac"
-
+# brew "git-flow"
+# brew "gpg"
+# brew "gpg2"
+# brew "pinentry-mac"
 brew "node"
 brew "yarn", args: ['without-node']
 
@@ -37,3 +37,5 @@ cask "slack"
 cask "telegram"
 cask "the-unarchiver"
 cask "calibre"
+cask "elmedia-player"
+cask "pomodone"
