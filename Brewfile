@@ -23,6 +23,7 @@ brew "yarn", args: ['without-node']
 # cask "webtorrent"
 
 cask "java"
+cask "docker"
 cask "sourcetree"
 cask "gitkraken"
 cask "jetbrains-toolbox"
