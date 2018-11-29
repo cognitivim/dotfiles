@@ -46,3 +46,12 @@ cask "calibre"
 cask "elmedia-player"
 cask "pomodone"
 cask "raindropio"
+
+## app store apps
+
+mas "Amphetamine", id: 937984704
+mas "App Cleaner", id: 1013897218
+mas "Todoist", id: 585829637
+
+mas "AdGuard for Safari", id: 1440147259
+mas "PiPifier", id: 1160374471
