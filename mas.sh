@@ -4,6 +4,7 @@
 
 mas install 585829637  # Todoist
 mas install 937984704  # Amphetamine
+mas install 1013897218 # App Cleaner & Uninstaller 
 
 # Safari extentions
 
