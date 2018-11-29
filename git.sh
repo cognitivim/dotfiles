@@ -6,13 +6,14 @@ git config --global user.email $GIT_EMAIL
 # generate:
 gpg --full-generate-key
 gpg --list-secret-keys --keyid-format LONG
-# ... set $GPG_KEYID
+# GPG_SIGNING_KEY=$(gpg --list-keys --keyid-format LONG | grep 'pub ' | sed 's/.*\///g; s/ .*//g')
 
 # setup git:
 git config --global user.signingkey $GPG_KEYID
 git config --global commit.gpgsign true
+git config --global tag.gpgsign true
+git config --global gpg.program "$(which gpg)"
 # git config --global credential.helper osxkeychain
-# git config gpg.program gpg2
 test -r ~/.bash_profile && echo 'export GPG_TTY=$(tty)' >> ~/.bash_profile
 echo 'export GPG_TTY=$(tty)' >> ~/.profile
 
