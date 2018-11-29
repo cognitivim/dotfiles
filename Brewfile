@@ -8,9 +8,9 @@ tap "homebrew/cask-drivers"
 brew "mas"
 brew "git"
 # brew "git-flow"
-# brew "gpg"
-# brew "gpg2"
-# brew "pinentry-mac"
+brew "gpg"
+brew "gpg2"
+brew "pinentry-mac"
 brew "node"
 brew "yarn", args: ['without-node']
 
