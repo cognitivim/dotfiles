@@ -1,5 +1,5 @@
-# GIT_USERNAME =
-# GIT_EMAIL =
+read -r -t 60 -p "GIT USERNAME=" GIT_USERNAME
+read -r -t 60 -p "GIT EMAIL=" GIT_EMAIL
 
 git config --global user.name $GIT_USERNAME
 git config --global user.email $GIT_EMAIL
@@ -20,7 +20,7 @@ echo 'export GPG_TTY=$(tty)' >> ~/.profile
 
 # setup github:
 gpg --armor --export $GIT_SIGNKEY
-# ... add to github
+echo -e "\nAdd this gpg key to github.\n"
 
 # setup agent:
 echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf
