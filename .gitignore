@@ -1,0 +1,15 @@
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+# IntelliJ IDE
+.idea
+
+# Visual Studio Code
+.vscode
+.history
+
+Thumbs.db
+Desktop.ini
+.DS_Store*
+ehthumbs.db
