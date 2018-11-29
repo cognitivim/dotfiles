@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 read -r -t 60 -p "GIT USERNAME=" GIT_USERNAME
 read -r -t 60 -p "GIT EMAIL=" GIT_EMAIL
 
