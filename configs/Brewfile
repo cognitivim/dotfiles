@@ -13,12 +13,6 @@ brew "pinentry-mac"
 brew "node"
 brew "yarn", args: ['without-node']
 
-cask "iina"
-cask "webtorrent"
-# cask "prefs-editor"
-# cask "sketch"
-# cask "cyberduck"
-
 cask "java"
 cask "docker"
 cask "sourcetree"
@@ -46,6 +40,13 @@ cask "calibre"
 cask "elmedia-player"
 cask "pomodone"
 cask "raindropio"
+cask "iina"
+cask "webtorrent"
+
+# cask "prefs-editor"
+# cask "sketch"
+# cask "cyberduck"
+# cask "android-file-transfer"
 
 ## app store apps
 

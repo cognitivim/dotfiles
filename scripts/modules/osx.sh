@@ -105,6 +105,11 @@ chflags -h hidden $HOME/Movies
 chflags -h hidden $HOME/Music
 chflags -h hidden $HOME/Pictures
 
+# Stop iTunes from responding to the keyboard media keys
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 ## Language & Region
 
@@ -292,6 +297,27 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 
+## App Store
+
+# enable the automatic update check
+# defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+
+# check for software updates daily, not just once per week
+# defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# download newly available updates in background
+# defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+
+# install System data files & security updates
+# defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+
+## Terminal
+
+# only use UTF-8 in Terminal.app
+defaults write com.apple.terminal StringEncodings -array 4
+
+
 ## TextEdit
 
 # use plain text mode for new TextEdit documents
@@ -347,10 +373,13 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 ## Mail
 
-# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+# copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+
+# add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 
-# Display emails in threaded mode, sorted by date (oldest at the top)
+# display emails in threaded mode, sorted by date (oldest at the top)
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
@@ -384,11 +413,20 @@ defaults write com.apple.iCal "number of hours displayed" 18
 # make Google Chrome Canary the default browser
 defaults write com.google.Chrome.canary DefaultBrowserSettingEnabled -bool true
 
+# expand the print dialog by default
+defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
+
 
 ## Kill affected applications
 
-for app in "Dock" "Finder" "Safari" "SystemUIServer"; do
-  killall "${app}" &> /dev/null
+for app in "Dock" \
+ "Finder" \
+ "Safari" \
+ "SystemUIServer" \
+ "Photos" \
+ "iCal" \
+ "Mail"; do
+    killall "${app}" &> /dev/null
 done
 
 
