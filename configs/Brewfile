@@ -54,5 +54,8 @@ mas "Amphetamine", id: 937984704
 mas "App Cleaner", id: 1013897218
 mas "Todoist", id: 585829637
 
+# safari extentions
+
 mas "AdGuard for Safari", id: 1440147259
 mas "PiPifier", id: 1160374471
+mas "1password 7 - Password Manager (7.2.5)", , id: 1333542190
