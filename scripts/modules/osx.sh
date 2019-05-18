@@ -33,7 +33,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 sudo nvram SystemAudioVolume=" "
 
 # play sound feedback when adjusting volume
-defaults write -g com.apple.sound.beep.feedback -int 1
+defaults write -g com.apple.sound.beep.feedback -bool true
 
 # avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -49,7 +49,7 @@ sudo defaults write /.Spotlight-V100/VolumeConfiguration.plist Exclusions -array
 touch ~/Downloads/.metadata_never_index
 
 # disable autocorrect
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # disable automatic capitalization
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
@@ -63,41 +63,8 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# iTunes: stop responding to the keyboard media keys
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
-
-# show fast user switching menu as: Account Name
-# defaults write -g userMenuExtraStyle -int 1
-
-# allow text selection in Quick Look
-# defaults write com.apple.finder QLEnableTextSelection -bool true
-
-# disabling automatic termination of inactive apps
-# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
-
-# automatically illuminate built-in MacBook keyboard in low light
-# defaults write com.apple.BezelServices kDim -bool true
-
-# turn off keyboard illumination when computer is not used for 5 minutes
-# defaults write com.apple.BezelServices kDimTime -int 300
-
-# set keyboard repeat rate to "damn fast".
-# defaults write NSGlobalDomain KeyRepeat -int 2
-
-# enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
-
-# enable HiDPI display modes (requires restart)
-# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
-
-# zoom: Options… > Use scroll wheel with modifier keys to zoom: ^ [control]
-# defaults write com.apple.universalaccess HIDScrollZoomModifierMask 262144
-
-# zoom: Options… > Disable zoom with cmd+scroll
-# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool false
-
 # theme mode
-# defaults write NSGlobalDomain AppleInterfaceStyle Dark
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
 # hide macOS unused folders
 chflags -h hidden $HOME/Documents
@@ -105,32 +72,24 @@ chflags -h hidden $HOME/Movies
 chflags -h hidden $HOME/Music
 chflags -h hidden $HOME/Pictures
 
-# Stop iTunes from responding to the keyboard media keys
-#launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
-
-# Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 ## Language & Region
-
-# setup system lanuages (in order of preference)
-# defaults write NSGlobalDomain AppleLanguages -array "en-US" "ru"
 
 # add english & russian keyboard layout
 defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>0</integer><key>KeyboardLayout Name</key><string>U.S.</string></dict>'
 defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>1</integer><key>KeyboardLayout Name</key><string>Russian</string></dict>'
 
 # show language menu in the top right corner of the boot screen
-# sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 # set time zome automatically using current location
 sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool true
 
 # set language and text formats
-# defaults write NSGlobalDomain AppleLanguages -array "en"
-# defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
-# defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-# defaults write NSGlobalDomain AppleMetricUnits -bool true
+defaults write NSGlobalDomain AppleLanguages -array "en"
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 
 ## Security
@@ -155,10 +114,6 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 # require administrator auth to change network
 /usr/libexec/airportd prefs RequireAdminNetworkChange=YES RequireAdminIBSS=YES
 
-# require password immediately after sleep or screen saver begins
-# defaults write com.apple.screensaver askForPassword -int 1
-# defaults write com.apple.screensaver askForPasswordDelay -int 0
-
 
 ## Trackpad
 
@@ -170,13 +125,13 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
 # enable tap to click for the active user
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -bool true
 
 # enable tap to click for the login screen
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -bool true
 
 # enable 3-finger drag
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool  true
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
 
@@ -192,17 +147,6 @@ defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/C
 # show bluetooth
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" -bool true
 defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
-
-# set clock format:
-#   "h:mm" Default
-#   "HH"   Use a 24-hour clock
-#   "a"    Show AM/PM
-#   "ss"   Display the time with seconds
-# Reference http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns
-
-# defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
-# EEE d MMM  HH:mm = Sun 20 Jul  13:15
-# defaults write com.apple.menuextra.clock DateFormat "EEE d MMM  HH:mm"
 
 
 ## Dock
@@ -225,7 +169,7 @@ APP_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict></dict>
 defaults write com.apple.dock persistent-apps -array-add "$APP_HEAD/Applications/Launchpad.app$APP_TAIL"
 
 # don’t automatically rearrange Spaces based on most recent use
-# defaults write com.apple.dock mru-spaces -bool false
+defaults write com.apple.dock mru-spaces -bool false
 
 
 ## Dashboard
@@ -238,10 +182,8 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 
 
 ## Desktop
+
 osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Mojave Night.jpg"'
-# screensaver kill
-# defaults write com.apple.screensaver idleTime -int 0
-# defaults -currentHost write com.apple.screensaver idleTime -int 0
 
 
 ## Finder 
@@ -250,7 +192,7 @@ osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/L
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # show library
-# chflags nohidden ~/Library
+chflags nohidden ~/Library
 
 # show tab bar
 defaults write com.apple.finder ShowTabView -bool true
@@ -287,29 +229,20 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # use current directory as default search scope
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# show external drive icons
-# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-
-# show mounted server icons
-# defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-
-# show removable media icons
-# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
 
 ## App Store
 
 # enable the automatic update check
-# defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
 # check for software updates daily, not just once per week
-# defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -bool true
 
 # download newly available updates in background
-# defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+defaults write com.apple.SoftwareUpdate AutomaticDownload -bool true
 
 # install System data files & security updates
-# defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 
 
 ## Terminal
@@ -321,7 +254,7 @@ defaults write com.apple.terminal StringEncodings -array 4
 ## TextEdit
 
 # use plain text mode for new TextEdit documents
-defaults write com.apple.TextEdit RichText -int 0
+defaults write com.apple.TextEdit RichText -bool false
 
 # open and save files as UTF-8
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
@@ -358,7 +291,7 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ## Printer
 
 # automatically quit printer app once the print jobs complete
-# defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
@@ -383,15 +316,6 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
-
-# "TB Item Identifiers" is the interesting item column
-defaults write com.apple.mail "NSToolbar Configuration MainWindow" -dict \
-  "TB Default Item Identifiers" '("checkNewMail:","showComposeWindow:",NSToolbarSpaceItem,NSToolbarFlexibleSpaceItem,"delete_junk","reply_replyAll_forward",FlaggedStatus,NSToolbarFlexibleSpaceItem,Search)' \
-  "TB Display Mode" 2 \
-  "TB Icon Size Mode" 1 \
-  "TB Is Shown" 1 \
-  "TB Item Identifiers" '("checkNewMail:",NSToolbarFlexibleSpaceItem,Search)' \
-  "TB Size Mode" 1
 
 
 ## iCal
@@ -435,3 +359,101 @@ sudo softwareupdate -ia --verbose
 
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+
+
+
+## General
+
+# iTunes: stop responding to the keyboard media keys
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+# show fast user switching menu as: Account Name
+# defaults write -g userMenuExtraStyle -bool true
+
+# allow text selection in Quick Look
+# defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# disabling automatic termination of inactive apps
+# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+
+# automatically illuminate built-in MacBook keyboard in low light
+# defaults write com.apple.BezelServices kDim -bool true
+
+# turn off keyboard illumination when computer is not used for 5 minutes
+# defaults write com.apple.BezelServices kDimTime -int 300
+
+# set keyboard repeat rate to "damn fast".
+# defaults write NSGlobalDomain KeyRepeat -int 2
+
+# enable subpixel font rendering on non-Apple LCDs
+# defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+# enable HiDPI display modes (requires restart)
+# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+# zoom: Options… > Use scroll wheel with modifier keys to zoom: ^ [control]
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask 262144
+
+# zoom: Options… > Disable zoom with cmd+scroll
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool false
+
+# increase sound quality for Bluetooth headphones/headsets
+# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+
+## Language & Region
+
+# setup system lanuages (in order of preference)
+# defaults write NSGlobalDomain AppleLanguages -array "en-US" "ru"
+
+
+## Security
+
+# require password immediately after sleep or screen saver begins
+# defaults write com.apple.screensaver askForPassword -bool true
+# defaults write com.apple.screensaver askForPasswordDelay -bool false
+
+
+## Menu bar
+
+# set clock format:
+#   "h:mm" Default
+#   "HH"   Use a 24-hour clock
+#   "a"    Show AM/PM
+#   "ss"   Display the time with seconds
+# Reference http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns
+
+# defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
+# EEE d MMM  HH:mm = Sun 20 Jul  13:15
+# defaults write com.apple.menuextra.clock DateFormat "EEE d MMM  HH:mm"
+
+
+## Desktop
+
+# screensaver kill:
+# defaults write com.apple.screensaver idleTime -bool false
+# defaults -currentHost write com.apple.screensaver idleTime -bool false
+
+
+## Finder 
+
+# show external drive icons
+# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+
+# show mounted server icons
+# defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+
+# show removable media icons
+# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+
+## Mail
+
+# "TB Item Identifiers" is the interesting item column
+# defaults write com.apple.mail "NSToolbar Configuration MainWindow" -dict \
+#  "TB Default Item Identifiers" '("checkNewMail:","showComposeWindow:",NSToolbarSpaceItem,NSToolbarFlexibleSpaceItem,"delete_junk","reply_replyAll_forward",FlaggedStatus,NSToolbarFlexibleSpaceItem,Search)' \
+#  "TB Display Mode" 2 \
+#  "TB Icon Size Mode" 1 \
+#  "TB Is Shown" 1 \
+#  "TB Item Identifiers" '("checkNewMail:",NSToolbarFlexibleSpaceItem,Search)' \
+#  "TB Size Mode" 1
