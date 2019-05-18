@@ -52,6 +52,7 @@ cask "android-file-transfer"
 
 mas "Amphetamine", id: 937984704
 mas "Todoist", id: 585829637
+mas "Bear", id: 1091189122
 # mas "App Cleaner", id: 1013897218
 
 # safari extentions
