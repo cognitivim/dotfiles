@@ -11,7 +11,7 @@ brew "git"
 brew "gpg"
 brew "pinentry-mac"
 brew "node"
-brew "yarn", args: ['without-node']
+brew "yarn", args: ['ignore-dependencies']
 
 cask "java"
 # cask "docker"
