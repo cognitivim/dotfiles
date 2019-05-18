@@ -14,26 +14,26 @@ brew "node"
 brew "yarn", args: ['without-node']
 
 cask "java"
-cask "docker"
+# cask "docker"
 cask "sourcetree"
 cask "gitkraken"
 cask "jetbrains-toolbox"
 cask "sublime-text"
-cask "postman"
-cask "insomnia"
+# cask "postman"
+# cask "insomnia"
 cask "cheatsheet"
 cask "google-chrome-canary"
 cask "firefox-developer-edition"
 
 cask "logitech-options"
-cask "vlc"
+# cask "vlc"
 cask "alfred"
 cask "notion"
 cask "evernote"
 cask "tunnelbear"
 cask "spotify"
-cask "pocket-casts"
-cask "slack"
+# cask "pocket-casts"
+# cask "slack"
 cask "telegram"
 cask "the-unarchiver"
 cask "calibre"
@@ -42,20 +42,20 @@ cask "pomodone"
 cask "raindropio"
 cask "iina"
 cask "webtorrent"
-
+cask "grammarly"
+cask "android-file-transfer"
 # cask "prefs-editor"
 # cask "sketch"
 # cask "cyberduck"
-# cask "android-file-transfer"
 
 ## app store apps
 
 mas "Amphetamine", id: 937984704
-mas "App Cleaner", id: 1013897218
 mas "Todoist", id: 585829637
+# mas "App Cleaner", id: 1013897218
 
 # safari extentions
 
 mas "AdGuard for Safari", id: 1440147259
 mas "PiPifier", id: 1160374471
-mas "1password 7 - Password Manager (7.2.5)", , id: 1333542190
+mas "1password 7 - Password Manager (7.2.5)", id: 1333542190
