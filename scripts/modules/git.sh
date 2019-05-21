@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "[git] setup..."
+
+
 read -r -t 60 -p "GIT USERNAME=" GIT_USERNAME
 read -r -t 60 -p "GIT EMAIL=" GIT_EMAIL
 
@@ -31,3 +34,6 @@ echo "max-cache-ttl 864000" >> ~/.gnupg/gpg-agent.conf
 echo "default-cache-ttl-ssh 86400" >> ~/.gnupg/gpg-agent.conf
 echo "max-cache-ttl-ssh 864000" >> ~/.gnupg/gpg-agent.conf
 killall gpg-agent
+
+
+echo "[git] done."
