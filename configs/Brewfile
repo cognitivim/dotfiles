@@ -59,4 +59,22 @@ mas "Bear", id: 1091189122
 
 mas "AdGuard for Safari", id: 1440147259
 mas "PiPifier", id: 1160374471
-mas "1password 7 - Password Manager (7.2.5)", id: 1333542190
+mas "1password 7 - Password Manager", id: 1333542190
+
+## paid
+
+# cask "1password"
+# cask "cleanmymac"
+# cask "tripmode"
+# cask "gemini"
+# cask "marginnote"
+# cask "pdf-expert"
+# cask "spark"
+# cask "insomnia"
+
+# mas "Magnet", id: 441258766
+# mas "Translate Tab", id: 458887729
+# mas "MindNode 6", id: 1289197285  
+# mas "KeyKey — Typing Practice", id: 1035137927  
+# mas "Microsoft OneNote", id: 784801555  
+# mas "Microsoft Word", id: 462054704
