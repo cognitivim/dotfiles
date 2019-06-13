@@ -28,6 +28,7 @@ cask "google-chrome-canary"
 # cask "cyberduck"
 # cask "devhub"
 # cask "github"
+# cask "sublime-merge"
 
 cask "vlc"
 cask "alfred"
