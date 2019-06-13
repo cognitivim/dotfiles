@@ -49,6 +49,7 @@ cask "android-file-transfer"
 # cask "iina"
 # cask "prefs-editor"
 # cask "sketch"
+# cask "vox" 
 
 ## app store apps
 
