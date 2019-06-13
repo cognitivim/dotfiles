@@ -27,6 +27,7 @@ cask "google-chrome-canary"
 # cask "cheatsheet"
 # cask "cyberduck"
 # cask "devhub"
+# cask "github"
 
 cask "vlc"
 cask "alfred"
