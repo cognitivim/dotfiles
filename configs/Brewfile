@@ -44,6 +44,7 @@ cask "raindropio"
 cask "webtorrent"
 cask "grammarly"
 cask "android-file-transfer"
+cask "google-backup-and-sync"
 # cask "logitech-options"
 # cask "pocket-casts"
 # cask "slack"
@@ -51,7 +52,8 @@ cask "android-file-transfer"
 # cask "iina"
 # cask "prefs-editor"
 # cask "sketch"
-# cask "vox" 
+# cask "vox"
+# cask "skype-for-business"
 
 ## app store apps
 
