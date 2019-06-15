@@ -56,18 +56,21 @@ cask "google-backup-and-sync"
 # cask "prefs-editor"
 # cask "sketch"
 # cask "skype-for-business"
+# cask "onenote-importer-preview"
 
 ## app store apps
 
 mas "Amphetamine", id: 937984704
-mas "Todoist", id: 585829637
-# mas "App Cleaner", id: 1013897218
+mas "Todoist: Organize your life", id: 585829637
+# mas "Spark - Email App by Readdle", id: 1176895641
+# mas "Cleaner-App", id: 1013897218
 
 # safari extentions
 
 mas "AdGuard for Safari", id: 1440147259
 mas "PiPifier", id: 1160374471
 mas "1password 7 - Password Manager", id: 1333542190
+mas "Raindrop.io", id: 957810159
 
 ## paid
 
@@ -79,6 +82,8 @@ mas "1password 7 - Password Manager", id: 1333542190
 # cask "pdf-expert"
 # cask "spark"
 # cask "dash"
+# cask "istat-menus"
+# cask "commander-one"
 
 # mas "Magnet", id: 441258766
 # mas "Translate Tab", id: 458887729
@@ -86,3 +91,7 @@ mas "1password 7 - Password Manager", id: 1333542190
 # mas "KeyKey — Typing Practice", id: 1035137927  
 # mas "Microsoft OneNote", id: 784801555  
 # mas "Microsoft Word", id: 462054704
+
+## links
+
+## DiskWarrior https://www.alsoft.com/DiskWarrior/index.html
