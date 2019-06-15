@@ -84,6 +84,9 @@ mas "Raindrop.io", id: 957810159
 # cask "dash"
 # cask "istat-menus"
 # cask "commander-one"
+# cask "fantastical"
+# cask "cardhop"
+# cask "meta"
 
 # mas "Magnet", id: 441258766
 # mas "Translate Tab", id: 458887729
@@ -91,6 +94,11 @@ mas "Raindrop.io", id: 957810159
 # mas "KeyKey — Typing Practice", id: 1035137927  
 # mas "Microsoft OneNote", id: 784801555  
 # mas "Microsoft Word", id: 462054704
+# mas "Reeder 4", id: 1449412482
+# mas "Calendarique", id: 1040634920
+# mas "Gestimer", id: 990588172
+# mas "MetaImage", id: 1397099749
+# mas "SyncSettings", id: 1438001736
 
 ## links
 
