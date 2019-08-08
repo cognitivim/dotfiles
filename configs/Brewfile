@@ -4,102 +4,62 @@ tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/cask-drivers"
-# tap "devhubapp/devhub"
 
-brew "mas"
 brew "git"
-# brew "git-flow"
 brew "gpg"
+brew "mas"
+# brew "node"
 brew "pinentry-mac"
-brew "node"
-brew "yarn", args: ['ignore-dependencies']
+# brew "yarn", args: ['ignore-dependencies']
 
-cask "java"
-cask "sourcetree"
-cask "jetbrains-toolbox"
-cask "sublime-text"
 cask "google-chrome-canary"
-# cask "firefox-developer-edition"
-# cask "gitkraken"
-# cask "docker"
-# cask "postman"
-# cask "insomnia"
-cask "cheatsheet"
-# cask "cyberduck"
-# cask "devhub"
-# cask "github"
-# cask "sublime-merge"
-
-cask "vlc"
-cask "alfred"
-# cask "notion"
-cask "evernote"
-cask "tunnelbear"
-cask "spotify"
-cask "telegram"
-cask "the-unarchiver"
-cask "calibre"
+cask "grammarly"
+cask "java"
+cask "jetbrains-toolbox"
 cask "pomodone"
 cask "raindropio"
-cask "webtorrent"
-cask "grammarly"
-cask "android-file-transfer"
-cask "google-backup-and-sync"
-# cask "vox"
-# cask "plex-media-player"
-# cask "plex-media-server"
-# cask "logitech-options"
+cask "sublime-text"
+cask "sourcetree"
+
+cask "alfred"
+cask "dictionaries"
+cask "evernote"
+cask "iina"
+cask "plex-media-server"
 cask "pocket-casts"
-# cask "slack"
-# cask "elmedia-player"
-# cask "iina"
-# cask "prefs-editor"
-# cask "sketch"
-# cask "figma"
-# cask "skype-for-business"
-# cask "onenote-importer-preview"
+cask "telegram"
+cask "webtorrent"
 
 ## app store apps
 
+mas "1password 7 - Password Manager", id: 1333542190
 mas "Amphetamine", id: 937984704
+mas "Jira Cloud by Atlassian", id: 1475897096
+mas "Microsoft OneNote", id: 784801555
 mas "Todoist: Organize your life", id: 585829637
-# mas "Spark - Email App by Readdle", id: 1176895641
-# mas "Cleaner-App", id: 1013897218
 
-# safari extentions
+## app store safari extentions
 
 mas "AdGuard for Safari", id: 1440147259
 mas "PiPifier", id: 1160374471
-mas "1password 7 - Password Manager", id: 1333542190
-mas "Raindrop.io", id: 957810159
+mas "Raindrop.io", id: 957810159]
 
-## paid
+## paid apps
 
-# cask "1password"
 # cask "cleanmymac"
-# cask "tripmode"
-# cask "gemini"
-# cask "marginnote"
-# cask "pdf-expert"
-# cask "spark"
 # cask "dash"
-# cask "istat-menus"
-# cask "commander-one"
-# cask "fantastical"
-# cask "cardhop"
+# cask "devonthink"
+# cask "elmedia-player"
+# cask "marginnote"
 # cask "meta"
+# cask "pdf-expert"
 
-# mas "Magnet", id: 441258766
-# mas "Translate Tab", id: 458887729
-# mas "MindNode 6", id: 1289197285  
-# mas "KeyKey — Typing Practice", id: 1035137927  
-# mas "Microsoft OneNote", id: 784801555  
-# mas "Microsoft Word", id: 462054704
-# mas "Reeder 4", id: 1449412482
-# mas "Calendarique", id: 1040634920
+# mas "Airmail 3", id: 918858936
 # mas "Gestimer", id: 990588172
-# mas "MetaImage", id: 1397099749
-# mas "SyncSettings", id: 1438001736
+# mas "Magnet", id: 441258766
+# mas "MindNode 6", id: 1289197285  
+# mas "Reeder 4", id: 1449412482
+# mas "Translate Tab", id: 458887729
 
 ## links
 
