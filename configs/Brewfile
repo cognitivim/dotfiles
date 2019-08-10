@@ -64,6 +64,67 @@ mas "Save to Pocket", id: 1477385213
 # mas "Reeder 4", id: 1449412482
 # mas "Translate Tab", id: 458887729
 
-## links
+## paid safari extentions
+
+# mas "Dark Reader for Safari", id: 1438243180
+
+## chrome pwa apps
+
+## https://castbox.fm
+## https://twitter.com
+
+############################################################
+
+# tap "devhubapp/devhub"
+
+# brew "git-flow"
+
+# cask "cheatsheet"
+# cask "cyberduck"
+# cask "devhub"
+# cask "docker"
+# cask "figma"
+# cask "firefox-developer-edition"
+# cask "github"
+# cask "gitkraken"
+# cask "insomnia"
+# cask "postman"
+# cask "prefs-editor"
+# cask "sketch"
+# cask "skype-for-business"
+# cask "slack"
+# cask "sublime-merge"
+
+# cask "android-file-transfer"
+# cask "calibre"
+# cask "google-backup-and-sync"
+# cask "logitech-options"
+# cask "onenote-importer-preview"
+# cask "spotify"
+# cask "the-unarchiver"
+# cask "tunnelbear"
+# cask "vlc"
+# cask "vox"
+
+## app store apps
+
+# mas "Cleaner-App", id: 1013897218
+
+## paid
+
+# cask "cardhop"
+# cask "commander-one"
+# cask "fantastical"
+# cask "gemini"
+# cask "istat-menus"
+# cask "tripmode"
+# cask "canary"
+
+# mas "Calendarique", id: 1040634920
+# mas "MetaImage", id: 1397099749
+# mas "Microsoft Word", id: 462054704
+# mas "SyncSettings", id: 1438001736
+
+############################################################
 
 ## DiskWarrior https://www.alsoft.com/DiskWarrior/index.html
