@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
+echo "Setting up Mac OS X apps and preferences..."
+
+
 # ask for the administrator password upfront
 # cache the root password
 sudo -v
 
 # keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-
-echo "Setting up Mac OS X apps and preferences..."
 
 
 ## General
@@ -29,11 +29,14 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# disable the sound effects on boot
+# ! disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
-# play sound feedback when adjusting volume
+# ! play sound feedback when adjusting volume
 defaults write -g com.apple.sound.beep.feedback -bool true
+
+# turn off keyboard illumination when computer is not used for 5 minutes
+defaults write com.apple.BezelServices kDimTime -int 300
 
 # avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -43,10 +46,6 @@ defaults write com.apple.screencapture location -string "$HOME/Desktop"
 
 # screencapture: save in PNG format
 defaults write com.apple.screencapture type -string "png"
-
-# Spotlight: exclude Downloads folder 
-sudo defaults write /.Spotlight-V100/VolumeConfiguration.plist Exclusions -array-add "$HOME/Downloads"
-touch ~/Downloads/.metadata_never_index
 
 # disable autocorrect
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -72,6 +71,9 @@ chflags -h hidden $HOME/Movies
 chflags -h hidden $HOME/Music
 chflags -h hidden $HOME/Pictures
 
+# allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
 
 ## Language & Region
 
@@ -85,7 +87,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bo
 # set time zome automatically using current location
 sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool true
 
-# set language and text formats
+# set system languages and text formats
 defaults write NSGlobalDomain AppleLanguages -array "en"
 defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
@@ -93,6 +95,10 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 
 ## Security
+
+# ! require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -bool true
+defaults write com.apple.screensaver askForPasswordDelay -bool false
 
 # disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
@@ -112,7 +118,7 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # require administrator auth to change network
-/usr/libexec/airportd prefs RequireAdminNetworkChange=YES RequireAdminIBSS=YES
+sudo /usr/libexec/airportd prefs RequireAdminNetworkChange=YES RequireAdminIBSS=YES
 
 
 ## Trackpad
@@ -163,13 +169,20 @@ FOLDER_HEAD="<dict><key>tile-data</key><dict><key>arrangement</key><integer>0</i
 FOLDER_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict><key>preferreditemsize</key><integer>-1</integer><key>showas</key><integer>3</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "$FOLDER_HEAD$HOME/Downloads$FOLDER_TAIL"
 
-# add Launchpad
-APP_HEAD="<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>"
-APP_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-defaults write com.apple.dock persistent-apps -array-add "$APP_HEAD/Applications/Launchpad.app$APP_TAIL"
+# ! add Launchpad
+# APP_HEAD="<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>"
+# APP_TAIL="</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+# defaults write com.apple.dock persistent-apps -array-add "$APP_HEAD/Applications/Launchpad.app$APP_TAIL"
 
 # don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
+
+
+## Desktop
+
+# screensaver kill:
+defaults write com.apple.screensaver idleTime -bool false
+defaults -currentHost write com.apple.screensaver idleTime -bool false
 
 
 ## Dashboard
@@ -179,11 +192,6 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 
 # don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
-
-
-## Desktop
-
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/Library/Desktop Pictures/Mojave Night.jpg"'
 
 
 ## Finder 
@@ -207,8 +215,8 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowSidebar -bool true
 
 # use list view in all windows by default
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-# defaults write com.apple.finder FXPreferredViewStyle Nlsv
+# defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.finder FXPreferredViewStyle Nlsv
 
 # set Desktop as default location for new Finder windows
 # for other paths, use `PfLo` and `file:///full/path/here/`
@@ -230,6 +238,17 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 
+## Printer
+
+# automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+
+
 ## App Store
 
 # enable the automatic update check
@@ -247,55 +266,8 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 
 ## Terminal
 
-# only use UTF-8 in Terminal.app
+# only use UTF-8
 defaults write com.apple.terminal StringEncodings -array 4
-
-
-## TextEdit
-
-# use plain text mode for new TextEdit documents
-defaults write com.apple.TextEdit RichText -bool false
-
-# open and save files as UTF-8
-defaults write com.apple.TextEdit PlainTextEncoding -int 4
-defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
-
-
-## Safari
-
-# don’t send search queries to Apple
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
-# show the full URL in the address bar
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# allow hitting the Backspace key to go to the previous page in history
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
-
-# enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
-
-# add a context menu item for showing the Web Inspector in web views
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-
-## Photos
-
-# prevent opening automatically when devices are plugged in
-defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
-
-
-## Printer
-
-# automatically quit printer app once the print jobs complete
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
-
-# expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 
 ## Time Machine
@@ -332,6 +304,37 @@ defaults write com.apple.iCal "n days of week" 7
 defaults write com.apple.iCal "number of hours displayed" 18
 
 
+## TextEdit
+
+# use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -bool false
+
+# open and save files as UTF-8
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+
+## Safari
+
+# don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# show the full URL in the address bar
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+# allow hitting the Backspace key to go to the previous page in history
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
+
+# enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+
+# add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+
 ## Chrome
 
 # make Google Chrome Canary the default browser
@@ -345,6 +348,7 @@ defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool t
 
 for app in "Dock" \
  "Finder" \
+ "Spotlight" \
  "Safari" \
  "SystemUIServer" \
  "Photos" \
@@ -370,17 +374,11 @@ echo "Done. Note that some of these changes require a logout/restart to take eff
 # show fast user switching menu as: Account Name
 # defaults write -g userMenuExtraStyle -bool true
 
-# allow text selection in Quick Look
-# defaults write com.apple.finder QLEnableTextSelection -bool true
-
 # disabling automatic termination of inactive apps
 # defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # automatically illuminate built-in MacBook keyboard in low light
 # defaults write com.apple.BezelServices kDim -bool true
-
-# turn off keyboard illumination when computer is not used for 5 minutes
-# defaults write com.apple.BezelServices kDimTime -int 300
 
 # set keyboard repeat rate to "damn fast".
 # defaults write NSGlobalDomain KeyRepeat -int 2
@@ -401,19 +399,6 @@ echo "Done. Note that some of these changes require a logout/restart to take eff
 # defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 
-## Language & Region
-
-# setup system lanuages (in order of preference)
-# defaults write NSGlobalDomain AppleLanguages -array "en-US" "ru"
-
-
-## Security
-
-# require password immediately after sleep or screen saver begins
-# defaults write com.apple.screensaver askForPassword -bool true
-# defaults write com.apple.screensaver askForPasswordDelay -bool false
-
-
 ## Menu bar
 
 # set clock format:
@@ -426,13 +411,6 @@ echo "Done. Note that some of these changes require a logout/restart to take eff
 # defaults write com.apple.menuextra.clock DateFormat -string "HH:mm"
 # EEE d MMM  HH:mm = Sun 20 Jul  13:15
 # defaults write com.apple.menuextra.clock DateFormat "EEE d MMM  HH:mm"
-
-
-## Desktop
-
-# screensaver kill:
-# defaults write com.apple.screensaver idleTime -bool false
-# defaults -currentHost write com.apple.screensaver idleTime -bool false
 
 
 ## Finder 
@@ -457,3 +435,8 @@ echo "Done. Note that some of these changes require a logout/restart to take eff
 #  "TB Is Shown" 1 \
 #  "TB Item Identifiers" '("checkNewMail:",NSToolbarFlexibleSpaceItem,Search)' \
 #  "TB Size Mode" 1
+
+
+# Spotlight: exclude Downloads folder 
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration.plist Exclusions -array-add "$HOME/Downloads"
+# touch ~/Downloads/.metadata_never_index
