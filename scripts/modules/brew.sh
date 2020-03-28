@@ -17,9 +17,8 @@ fi
 echo "Updating Homebrew formulas..."
 brew update
 brew cleanup
-brew cask cleanup
-brew cask doctor
 brew doctor
+brew cask doctor
 
 brew tap homebrew/bundle
 

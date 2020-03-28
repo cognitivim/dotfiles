@@ -12,7 +12,7 @@ git config --global user.email $GIT_EMAIL
 ## SIGN KEY
 
 # generate:
-gpg --full-generate-key
+# gpg --full-generate-key
 GIT_SIGNKEY=$(gpg --list-keys --keyid-format LONG | grep 'pub ' | sed 's/.*\///g; s/ .*//g')
 
 # setup git:
@@ -24,8 +24,8 @@ test -r ~/.bash_profile && echo 'export GPG_TTY=$(tty)' >> ~/.bash_profile
 echo 'export GPG_TTY=$(tty)' >> ~/.profile
 
 # setup github:
-gpg --armor --export $GIT_SIGNKEY
-echo -e "\nAdd this gpg key to github.\n"
+# gpg --armor --export $GIT_SIGNKEY
+# echo -e "\nAdd this gpg key to github.\n"
 
 # setup agent:
 echo "pinentry-program /usr/local/bin/pinentry-mac" >> ~/.gnupg/gpg-agent.conf

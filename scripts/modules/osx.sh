@@ -84,7 +84,7 @@ defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict><k
 # show language menu in the top right corner of the boot screen
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
-# set time zome automatically using current location
+# set time zone automatically using current location
 sudo defaults write /Library/Preferences/com.apple.timezone.auto.plist Active -bool true
 
 # set system languages and text formats

@@ -2,8 +2,8 @@ cask_args appdir: "/Applications"
 
 tap "homebrew/core"
 tap "homebrew/cask"
-tap "homebrew/cask-versions"
 tap "homebrew/cask-drivers"
+tap "homebrew/cask-versions"
 
 brew "git"
 brew "gpg"
@@ -12,29 +12,31 @@ brew "node"
 brew "pinentry-mac"
 brew "yarn", args: ['ignore-dependencies']
 
+cask "google-chrome"
 cask "google-chrome-canary"
 cask "grammarly"
 cask "java"
 cask "jetbrains-toolbox"
 cask "pomodone"
 cask "raindropio"
-cask "sublime-text"
 cask "sourcetree"
+cask "sublime-text"
 
 cask "alfred"
-cask "dictionaries"
 cask "evernote"
-cask "iina"
-cask "plex-media-server"
+#cask "iina"
+#cask "plex-media-server"
 cask "pocket-casts"
 cask "telegram"
 cask "webtorrent"
+cask "vlc"
+cask "spotify"
+cask "tunnelbear"
+cask "brave-browser"
 
 ## app store apps
 
-mas "1password 7 - Password Manager", id: 1333542190
 mas "Amphetamine", id: 937984704
-mas "Jira Cloud by Atlassian", id: 1475897096
 mas "Microsoft OneNote", id: 784801555
 mas "Todoist: Organize your life", id: 585829637
 
@@ -49,36 +51,35 @@ mas "Save to Pocket", id: 1477385213
 
 ## paid apps
 
+# cask "bartender"
 # cask "cleanmymac"
 # cask "dash"
-# cask "devonthink"
+# cask "devonthink" ## devonthink pro server
+# cask "dictionaries" 
 # cask "elmedia-player"
 # cask "marginnote"
 # cask "meta"
 # cask "pdf-expert"
 
+# mas "1password 7 - Password Manager", id: 1333542190
 # mas "Airmail 3", id: 918858936
 # mas "Gestimer", id: 990588172
+# mas "KeyKey — Typing Practice", id: 1035137927
 # mas "Magnet", id: 441258766
 # mas "MindNode 6", id: 1289197285  
 # mas "Reeder 4", id: 1449412482
 # mas "Translate Tab", id: 458887729
 
-## paid safari extentions
-
-# mas "Dark Reader for Safari", id: 1438243180
-
 ## chrome pwa apps
 
-## https://castbox.fm
 ## https://twitter.com
+## https://web.telegram.org
 
 ############################################################
 
 # tap "devhubapp/devhub"
 
 # brew "git-flow"
-
 # cask "cheatsheet"
 # cask "cyberduck"
 # cask "devhub"
@@ -96,19 +97,15 @@ mas "Save to Pocket", id: 1477385213
 # cask "sublime-merge"
 
 # cask "android-file-transfer"
-# cask "calibre"
 # cask "google-backup-and-sync"
 # cask "logitech-options"
-# cask "onenote-importer-preview"
-# cask "spotify"
 # cask "the-unarchiver"
-# cask "tunnelbear"
-# cask "vlc"
 # cask "vox"
 
 ## app store apps
 
 # mas "Cleaner-App", id: 1013897218
+# mas "Jira Cloud by Atlassian", id: 1475897096
 
 ## paid
 
@@ -124,6 +121,14 @@ mas "Save to Pocket", id: 1477385213
 # mas "MetaImage", id: 1397099749
 # mas "Microsoft Word", id: 462054704
 # mas "SyncSettings", id: 1438001736
+
+## paid safari extentions
+
+# mas "Dark Reader for Safari", id: 1438243180
+
+## chrome pwa apps
+
+## https://castbox.fm
 
 ############################################################
 
