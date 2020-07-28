@@ -12,6 +12,7 @@ brew "node"
 brew "pinentry-mac"
 brew "yarn", args: ['ignore-dependencies']
 
+cask "docker"
 cask "google-chrome"
 cask "google-chrome-canary"
 cask "grammarly"
@@ -23,24 +24,26 @@ cask "sourcetree"
 cask "sublime-text"
 
 cask "alfred"
-cask "evernote"
-#cask "iina"
-#cask "plex-media-server"
-cask "pocket-casts"
-cask "telegram"
-cask "webtorrent"
-cask "vlc"
-cask "spotify"
-cask "tunnelbear"
 cask "brave-browser"
+cask "cheatsheet"
+cask "notion"
+cask "pocket-casts"
+cask "spotify"
+cask "telegram"
+cask "telegram-desktop"
+cask "tunnelbear"
+cask "vlc"
+cask "webtorrent"
 
-## app store apps
+## apps (app-store)
 
 mas "Amphetamine", id: 937984704
+mas "Animal Countdown", id: 1117246590
+mas "Drafts", id: 1435957248
 mas "Microsoft OneNote", id: 784801555
 mas "Todoist: Organize your life", id: 585829637
 
-## app store safari extentions
+## safari extentions (app-store)
 
 mas "AdGuard for Safari", id: 1440147259
 mas "DuckDuckGo Privacy Essentials", id: 1482920575
@@ -49,41 +52,46 @@ mas "PiPifier", id: 1160374471
 mas "Raindrop.io", id: 957810159
 mas "Save to Pocket", id: 1477385213
 
-## paid apps
+## apps (paid)
 
 # cask "bartender"
 # cask "cleanmymac"
 # cask "dash"
 # cask "devonthink" ## devonthink pro server
-# cask "dictionaries" 
-# cask "elmedia-player"
+# cask "gemini"
+# cask "keep-it"
 # cask "marginnote"
 # cask "meta"
 # cask "pdf-expert"
+# cask "sketch"
 
 # mas "1password 7 - Password Manager", id: 1333542190
-# mas "Airmail 3", id: 918858936
+# mas "Calendarique", id: 1040634920
 # mas "Gestimer", id: 990588172
 # mas "KeyKey — Typing Practice", id: 1035137927
 # mas "Magnet", id: 441258766
+# mas "MetaImage", id: 1397099749
 # mas "MindNode 6", id: 1289197285  
 # mas "Reeder 4", id: 1449412482
 # mas "Translate Tab", id: 458887729
 
-## chrome pwa apps
+## safari extentions (paid app-store)
 
+# mas "Dark Reader for Safari", id: 1438243180
+
+## chrome pwa-apps
+
+## https://snapdrop.net
 ## https://twitter.com
-## https://web.telegram.org
+
 
 ############################################################
 
 # tap "devhubapp/devhub"
 
 # brew "git-flow"
-# cask "cheatsheet"
 # cask "cyberduck"
 # cask "devhub"
-# cask "docker"
 # cask "figma"
 # cask "firefox-developer-edition"
 # cask "github"
@@ -91,14 +99,15 @@ mas "Save to Pocket", id: 1477385213
 # cask "insomnia"
 # cask "postman"
 # cask "prefs-editor"
-# cask "sketch"
 # cask "skype-for-business"
 # cask "slack"
 # cask "sublime-merge"
 
 # cask "android-file-transfer"
 # cask "google-backup-and-sync"
+# cask "iina"
 # cask "logitech-options"
+# cask "plex-media-server"
 # cask "the-unarchiver"
 # cask "vox"
 
@@ -109,22 +118,19 @@ mas "Save to Pocket", id: 1477385213
 
 ## paid
 
+# cask "canary"
 # cask "cardhop"
 # cask "commander-one"
+# cask "dictionaries" 
+# cask "elmedia-player"
 # cask "fantastical"
-# cask "gemini"
 # cask "istat-menus"
+# cask "sketchup"
 # cask "tripmode"
-# cask "canary"
 
-# mas "Calendarique", id: 1040634920
-# mas "MetaImage", id: 1397099749
+# mas "Airmail 3", id: 918858936
 # mas "Microsoft Word", id: 462054704
 # mas "SyncSettings", id: 1438001736
-
-## paid safari extentions
-
-# mas "Dark Reader for Safari", id: 1438243180
 
 ## chrome pwa apps
 
